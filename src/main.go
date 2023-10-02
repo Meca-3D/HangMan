@@ -1,7 +1,12 @@
 package main
 
-import "hangman/wordSelector"
+import (
+	"fmt"
+	"hangman/wordSelector"
+)
 
 func main() {
-	wordSelector.ReadFile()
+	var wordlist []string
+	wordlist = wordSelector.ReadFile()
+	fmt.Println(wordSelector.ChoseRandomWord(wordlist))
 }

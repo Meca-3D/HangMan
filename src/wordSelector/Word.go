@@ -29,7 +29,11 @@ func ReadFile() []string {
 }
 
 func ChoseRandomWord(wordlist []string) string {
+	var wordInArray []string
 	randomIndex := rand.Intn(len(wordlist) - 1)
-	for _; 
+	word := wordlist[randomIndex]
+	for letter := range word {
+		wordInArray = append(wordInArray, rune(letter))
+	}
 	return wordlist[randomIndex]
 }

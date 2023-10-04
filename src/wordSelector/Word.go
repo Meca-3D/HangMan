@@ -28,12 +28,9 @@ func ReadFile() []string {
 	return word
 }
 
-func ChoseRandomWord(wordlist []string) string {
+func ChoseRandomWord(wordlist []string) []string {
 	var wordInArray []string
 	randomIndex := rand.Intn(len(wordlist) - 1)
-	word := wordlist[randomIndex]
-	for letter := range word {
-		wordInArray = append(wordInArray, rune(letter))
-	}
-	return wordlist[randomIndex]
+	wordInArray = append(wordInArray, wordlist[randomIndex])
+	return wordInArray
 }

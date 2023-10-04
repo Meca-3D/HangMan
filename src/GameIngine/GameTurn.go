@@ -15,7 +15,7 @@ func GameLoop(wordToFind []string) {
 		loop += 1
 		answer = append(answer, "_")
 	}
-	fmt.Println()
+	fmt.Println(answer)
 	for answer[0] != wordToFind[0] || hangStep != 7 {
 		fmt.Scan(&letter)
 		if strings.Contains(wordToFind[0], letter) {

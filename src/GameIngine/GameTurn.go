@@ -2,26 +2,27 @@ package GameIngine
 
 import (
 	"fmt"
-	"strings"
 )
 
-func GameLoop(wordToFind []string) {
+func GameLoop(wordToFind []rune) {
 	var answer []string
 	var letter string
 	var hangStep int
-	var letterNotWorking []string
-	loop := 0
-	for loop < len(wordToFind) {
-		loop += 1
+	//var letterNotWorking []string
+	for loop := 0; loop < len(wordToFind); loop++ {
 		answer = append(answer, "_")
 	}
 	fmt.Println(answer)
-	for answer[0] != wordToFind[0] || hangStep != 7 {
+	for rune(answer[0][0]) != wordToFind[0] || hangStep != 7 {
 		fmt.Scan(&letter)
-		if strings.Contains(wordToFind[0], letter) {
-
-		} else {
-			letterNotWorking = append(letterNotWorking, letter)
+		if len(letter) > 1 {
+			fmt.Println("Pas bon")
+			fmt.Scan(&letter)
 		}
+		//if strings.Contains(wordToFind, letter) {
+
+		//} else {
+		//	letterNotWorking = append(letterNotWorking, letter)
+		//}
 	}
 }

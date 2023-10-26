@@ -5,24 +5,59 @@ import (
 )
 
 func GameLoop(wordToFind []rune) {
-	var answer []string
-	var letter string
+	var answer []rune
 	var hangStep int
 	//var letterNotWorking []string
 	for loop := 0; loop < len(wordToFind); loop++ {
-		answer = append(answer, "_")
+		answer = append(answer, rune(95))
 	}
-	fmt.Println(answer)
-	for rune(answer[0][0]) != wordToFind[0] || hangStep != 7 {
-		fmt.Scan(&letter)
-		if len(letter) > 1 {
-			fmt.Println("Pas bon")
-			fmt.Scan(&letter)
-		}
-		//if strings.Contains(wordToFind, letter) {
+	Display(answer, hangStep)
+	for IsWordIsGood(wordToFind, answer) || hangStep != 7 {
+		WordContainLetter(wordToFind, LetterChoice(), answer)
+	}
+}
 
-		//} else {
-		//	letterNotWorking = append(letterNotWorking, letter)
-		//}
+func LetterChoice() []rune {
+	var letter string
+	fmt.Scan(&letter)
+	for len(letter) > 1 || len(letter) <= 0 {
+		fmt.Println("Pas bon")
+		fmt.Scan(&letter)
 	}
+	returnLetter := []rune(letter)
+	return returnLetter
+}
+
+func WordContainLetter(word []rune, letter []rune, answer []rune) {
+	contain := false
+	for i := len(word) - 1; i >= 0; i-- {
+		if word[i] == letter[0] {
+			answer[i] = letter[0]
+			contain = true
+			Display(answer, 5)
+		}
+	}
+	if contain == true {
+		fmt.Println("tu as trouver une lettre")
+	}
+}
+
+func Display(runeToDisplay []rune, step int) {
+	var word string
+	for i := len(runeToDisplay) - 1; i >= 0; i-- {
+		word = string(runeToDisplay[i]) + " " + word
+	}
+	fmt.Println(step)
+	fmt.Println(word)
+}
+
+func IsWordIsGood(word []rune, answer []rune) bool {
+	for i := len(word) - 1; i > 0; i-- {
+		fmt.Println(i)
+		if word[i] != answer[i] {
+			return false
+		}
+	}
+	fmt.Println("Mot trouver")
+	return true
 }

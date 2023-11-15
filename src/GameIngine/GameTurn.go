@@ -16,6 +16,11 @@ func GameLoop(wordToFind []rune) {
 	for !IsWordIsGood(wordToFind, answer) && hangStep != 7 {
 		WordContainLetter(wordToFind, LetterChoice(), answer, &hangStep)
 	}
+
+	if hangStep == 7 {
+		fmt.Println("Tu es trop nuuuuuuuul ! Le mot était", string(wordToFind))
+	}
+
 }
 
 func WordContainLetter(word []rune, letter []rune, answer []rune, hangStep *int) {
@@ -29,9 +34,9 @@ func WordContainLetter(word []rune, letter []rune, answer []rune, hangStep *int)
 		}
 	}
 	if contain {
-		fmt.Println("Tu as trouvé une lettre")
+		fmt.Println("\nGg ! Tu as trouvé une lettre !\n")
 	} else {
-		fmt.Println("La lettre ne fait pas parti du mot, choisis une nouvelle lettre")
+		fmt.Println("\nOh mince :/ La lettre ne fait pas partie du mot.\n")
 		*hangStep++
 	}
 	Display(answer, *hangStep)

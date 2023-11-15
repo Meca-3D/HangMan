@@ -2,6 +2,7 @@ package wordSelector
 
 import (
 	"bufio"
+	"fmt"
 	"log"
 	"math/rand"
 	"os"
@@ -34,4 +35,10 @@ func ChoseRandomWord(wordlist []string) []rune {
 	wordInArray += wordlist[randomIndex]
 	s := []rune(wordInArray)
 	return s
+}
+
+func ChooseWord() string {
+	var word string
+	fmt.Scan(&word)
+	return word
 }
